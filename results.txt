@@ -1,0 +1,526 @@
+Sayar Ghosh Roy - 20171047
+
+All possible tags for a particular word in the training set based on first occurence in corpus:
+
+She ['PPS']
+has ['HVZ', 'NIL', 'HVZ-NC']
+been ['BEN']
+absent ['JJ', 'VB']
+since ['IN', 'CS', 'RB']
+last ['AP', 'VB', 'NN', 'AP-HL', 'RB']
+Wednesday ['NR']
+It ['PPS', 'PPO-TL', 'PPS-TL']
+doesn't ['DOZ*']
+matter ['NN', 'VB']
+what ['WDT', 'WDT-HL', 'WDT-NC']
+excuse ['NN', 'VB']
+he ['PPS', 'PPS-NC', 'NIL']
+gives ['VBZ']
+me ['PPO', 'FW-PPO']
+I ['PPSS', 'NN', 'PPSS-NC', 'NN-TL', 'NP', 'NIL', 'PPSS-HL']
+can't ['MD*']
+forgive ['VB']
+him ['PPO', 'PPO-NC']
+I ['PPSS', 'NN', 'PPSS-NC', 'NN-TL', 'NP', 'NIL', 'PPSS-HL']
+canceled ['VBN', 'VBD']
+my ['PP$', 'UH']
+appointment ['NN']
+because ['CS', 'RB', 'CS-HL']
+of ['IN', 'IN-TL', 'IN-HL', 'IN-NC', 'IN-TL-HL', 'NIL']
+urgent ['JJ']
+business ['NN', 'NN-HL']
+What ['WDT', 'WDT-HL', 'WPS-TL', 'WPO-TL', 'WPS']
+do ['DO', 'DO-HL', 'DO-NC']
+you ['PPSS', 'PPO', 'PPO-HL', 'PPSS-HL', 'PPSS-NC', 'PPO-NC']
+do ['DO', 'DO-HL', 'DO-NC']
+in ['IN', 'RP', 'IN-HL', 'IN-TL', 'IN-NC', 'RP-HL', 'NN', 'NIL', 'RP-NC', 'FW-IN']
+Japan ['NP', 'NP-TL']
+The ['AT', 'AT-TL', 'AT-HL']
+Handmaid’s NOT_FOUND
+Tale ['NN']
+is ['BEZ', 'BEZ-HL', 'NIL', 'BEZ-NC', 'BEZ-TL']
+an ['AT', 'AT-HL', 'NIL', 'AT-NC', 'CC']
+awesome ['JJ']
+piece ['NN', 'FW-NN', 'VB']
+of ['IN', 'IN-TL', 'IN-HL', 'IN-NC', 'IN-TL-HL', 'NIL']
+dystopian ['JJ']
+fiction ['NN']
+OK ['JJ', 'RB']
+Now ['RB', 'RB-HL', 'RB-NC']
+what ['WDT', 'WDT-HL', 'WDT-NC']
+I ['PPSS', 'NN', 'PPSS-NC', 'NN-TL', 'NP', 'NIL', 'PPSS-HL']
+was ['BEDZ', 'BEDZ-HL', 'BEDZ-NC']
+laughed ['VBD', 'VBN']
+at ['IN', 'IN-HL', 'IN-TL', 'IN-NC']
+by ['IN', 'IN-HL', 'IN-TL', 'RB', 'NIL', 'IN-NC']
+everyone ['PN']
+There ['EX', 'RB', 'EX-HL']
+were ['BED', 'BED-NC']
+people ['NNS', 'NNS-HL', 'VB', 'NNS-NC']
+everywhere ['RB', 'NN']
+covering ['VBG', 'NN']
+the ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL']
+roads ['NNS', 'NNS-HL']
+along ['IN', 'RB', 'RB-HL']
+the ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL']
+route ['NN', 'FW-NN']
+from ['IN', 'IN-HL', 'IN-TL']
+the ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL']
+BJP NOT_FOUND
+headquarters ['NN', 'NNS']
+to ['TO', 'IN', 'IN-HL', 'TO-HL', 'IN-TL', 'NPS', 'NIL', 'QL', 'TO-NC', 'IN-NC']
+the ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL']
+Smriti NOT_FOUND
+Sthal NOT_FOUND
+from ['IN', 'IN-HL', 'IN-TL']
+side ['NN', 'NN-HL', 'JJ']
+to ['TO', 'IN', 'IN-HL', 'TO-HL', 'IN-TL', 'NPS', 'NIL', 'QL', 'TO-NC', 'IN-NC']
+side ['NN', 'NN-HL', 'JJ']
+with ['IN', 'IN-HL', 'RB', 'IN-NC']
+security ['NN']
+personnel ['NNS', 'NNS-HL', 'FW-JJ']
+maintaining ['VBG']
+strict ['JJ']
+vigil ['NN']
+to ['TO', 'IN', 'IN-HL', 'TO-HL', 'IN-TL', 'NPS', 'NIL', 'QL', 'TO-NC', 'IN-NC']
+ensure ['VB']
+that ['CS', 'WPS', 'DT', 'QL', 'WPO', 'CS-HL', 'DT-NC', 'NIL', 'WPS-NC', 'WPO-NC', 'CS-NC', 'WPS-HL']
+nothing ['PN']
+goes ['VBZ']
+wrong ['JJ', 'JJ-HL', 'RB', 'NN', 'JJ-NC']
+
+I will be following the approach used by the Brill's Tagger:
+The tagger initially tags by assigning each word its most likely tag, estimated by examining a large tagged corpus, without regard to context.
+
+The List of tags for a particular word in the Brown Corpus is assigned in the decreasing order of frequencies of that word having that particular tag. At the first stage, we should ideally assign to each word, the tag for that word with the highest frequency of occurence.
+Since, we do not have frequencies available, the tag assigned to the first occurence of a word in the corpus will be out default tag for a word and then we will apply methods of disambiguation.
+
+
+Sentences with their words mapped to the default tags with their meanings:
+(Using the official Brown tagset)
+
+
+('She', 'PPS', '3rd. singular nominative pronoun (he, she, it, one)')  
+('has', 'HVZ', 'has')  
+('been', 'BEN', 'been')  
+('absent', 'JJ', 'adjective')  
+('since', 'IN', 'preposition')  
+('last', 'AP', 'post-determiner (many, several, next)')  
+('Wednesday', 'NR', 'adverbial noun (home, today, west)')  
+
+('It', 'PPS', '3rd. singular nominative pronoun (he, she, it, one)')  
+("doesn't", 'DOZ*', 'does Negated')  
+('matter', 'NN', 'singular or mass noun')  
+('what', 'WDT', 'wh- determiner (what, which)')  
+('excuse', 'NN', 'singular or mass noun')  
+('he', 'PPS', '3rd. singular nominative pronoun (he, she, it, one)')  
+('gives', 'VBZ', 'verb, 3rd. singular present')  
+('me', 'PPO', 'objective personal pronoun (me, him, it, them)')  
+('I', 'PPSS', 'other nominative personal pronoun (I, we, they, you)')  
+("can't", 'MD*', 'modal auxiliary (can, should, will) Negated')  
+('forgive', 'VB', 'verb, base form')  
+('him', 'PPO', 'objective personal pronoun (me, him, it, them)')  
+
+('I', 'PPSS', 'other nominative personal pronoun (I, we, they, you)')  
+('canceled', 'VBN', 'verb, past participle')  
+('my', 'PP$', 'possessive personal pronoun (my, our)')  
+('appointment', 'NN', 'singular or mass noun')  
+('because', 'CS', 'subordinating conjunction (if, although)')  
+('of', 'IN', 'preposition')  
+('urgent', 'JJ', 'adjective')  
+('business', 'NN', 'singular or mass noun')  
+
+('What', 'WDT', 'wh- determiner (what, which)')  
+('do', 'DO', 'do')  
+('you', 'PPSS', 'other nominative personal pronoun (I, we, they, you)')  
+('do', 'DO', 'do')  
+('in', 'IN', 'preposition')  
+('Japan', 'NP', 'proper noun or part of name phrase')  
+
+('The', 'AT', 'article (a, the, no)')  
+('Handmaid’s', 'NULL', 'NOT FOUND')  
+('Tale', 'NN', 'singular or mass noun')  
+('is', 'BEZ', 'is')  
+('an', 'AT', 'article (a, the, no)')  
+('awesome', 'JJ', 'adjective')  
+('piece', 'NN', 'singular or mass noun')  
+('of', 'IN', 'preposition')  
+('dystopian', 'JJ', 'adjective')  
+('fiction', 'NN', 'singular or mass noun')  
+
+('OK', 'JJ', 'adjective')  
+('Now', 'RB', 'adverb')  
+('what', 'WDT', 'wh- determiner (what, which)')  
+
+('I', 'PPSS', 'other nominative personal pronoun (I, we, they, you)')  
+('was', 'BEDZ', 'was')  
+('laughed', 'VBD', 'verb, past tense')  
+('at', 'IN', 'preposition')  
+('by', 'IN', 'preposition')  
+('everyone', 'PN', 'nominal pronoun (everybody, nothing)')  
+
+('There', 'EX', 'existential there')  
+('were', 'BED', 'were')  
+('people', 'NNS', 'plural noun')  
+('everywhere', 'RB', 'adverb')  
+('covering', 'VBG', 'verb, present participle/gerund')  
+('the', 'AT', 'article (a, the, no)')  
+('roads', 'NNS', 'plural noun')  
+('along', 'IN', 'preposition')  
+('the', 'AT', 'article (a, the, no)')  
+('route', 'NN', 'singular or mass noun')  
+('from', 'IN', 'preposition')  
+('the', 'AT', 'article (a, the, no)')  
+('BJP', 'NULL', 'NOT FOUND')  
+('headquarters', 'NN', 'singular or mass noun')  
+('to', 'TO', 'infinitive marker to')  
+('the', 'AT', 'article (a, the, no)')  
+('Smriti', 'NULL', 'NOT FOUND')  
+('Sthal', 'NULL', 'NOT FOUND')  
+('from', 'IN', 'preposition')  
+('side', 'NN', 'singular or mass noun')  
+('to', 'TO', 'infinitive marker to')  
+('side', 'NN', 'singular or mass noun')  
+('with', 'IN', 'preposition')  
+('security', 'NN', 'singular or mass noun')  
+('personnel', 'NNS', 'plural noun')  
+('maintaining', 'VBG', 'verb, present participle/gerund')  
+('strict', 'JJ', 'adjective')  
+('vigil', 'NN', 'singular or mass noun')  
+('to', 'TO', 'infinitive marker to')  
+('ensure', 'VB', 'verb, base form')  
+('that', 'CS', 'subordinating conjunction (if, although)')  
+('nothing', 'PN', 'nominal pronoun (everybody, nothing)')  
+('goes', 'VBZ', 'verb, 3rd. singular present')  
+('wrong', 'JJ', 'adjective')  
+
+
+Wrongly tagged :
+
+"It doesn't matter" - "matter" should be a verb
+"I canceled..." - "cancelled" should be a VBD and not VBN
+NOT_FOUND tags becomes Proper Nouns and we check for 's or s' to assign corresponding $ tags
+"to Smriti Sthal" - "to" should be IN and not TO
+Some Proper Nouns listed as NN
+
+Disambiguation Rules:
+
+1. NN -> VB if DO* before NN
+
+2. VBN -> VBD unless [HV, HVZ, HVD, HVN, HVG] VBN
+
+3. VBD -> VBN if HV, HVZ, HVD, HVN, HVG] VBD
+
+4. NULL -> NP, if ends with 's or s' : consider NP$
+
+5. TO -> IN unless "[VB(#, D, G, N, P, Z)] to" OR "to [VB(#, D, G, N, P, Z)]"
+
+6. NN with first letter capitalized is NP
+
+
+The final tags assigned to the training data elements after applying all the disambiguation rules:
+
+
+('She', 'PPS')
+('has', 'HVZ')
+('been', 'BEN')
+('absent', 'JJ')
+('since', 'IN')
+('last', 'AP')
+('Wednesday', 'NR')
+
+('It', 'PPS')
+("doesn't", 'DOZ*')
+('matter', 'VB')
+('what', 'WDT')
+('excuse', 'NN')
+('he', 'PPS')
+('gives', 'VBZ')
+('me', 'PPO')
+('I', 'PPSS')
+("can't", 'MD*')
+('forgive', 'VB')
+('him', 'PPO')
+
+('I', 'PPSS')
+('canceled', 'VBD')
+('my', 'PP$')
+('appointment', 'NN')
+('because', 'CS')
+('of', 'IN')
+('urgent', 'JJ')
+('business', 'NN')
+
+('What', 'WDT')
+('do', 'DO')
+('you', 'PPSS')
+('do', 'DO')
+('in', 'IN')
+('Japan', 'NP')
+
+('The', 'AT')
+('Handmaid’s', 'NP$')
+('Tale', 'NP')
+('is', 'BEZ')
+('an', 'AT')
+('awesome', 'JJ')
+('piece', 'NN')
+('of', 'IN')
+('dystopian', 'JJ')
+('fiction', 'NN')
+
+('OK', 'JJ')
+('Now', 'RB')
+('what', 'WDT')
+
+('I', 'PPSS')
+('was', 'BEDZ')
+('laughed', 'VBD')
+('at', 'IN')
+('by', 'IN')
+('everyone', 'PN')
+
+('There', 'EX')
+('were', 'BED')
+('people', 'NNS')
+('everywhere', 'RB')
+('covering', 'VBG')
+('the', 'AT')
+('roads', 'NNS')
+('along', 'IN')
+('the', 'AT')
+('route', 'NN')
+('from', 'IN')
+('the', 'AT')
+('BJP', 'NP')
+('headquarters', 'NN')
+('to', 'IN')
+('the', 'AT')
+('Smriti', 'NP')
+('Sthal', 'NP')
+('from', 'IN')
+('side', 'NN')
+('to', 'IN')
+('side', 'NN')
+('with', 'IN')
+('security', 'NN')
+('personnel', 'NNS')
+('maintaining', 'VBG')
+('strict', 'JJ')
+('vigil', 'NN')
+('to', 'TO')
+('ensure', 'VB')
+('that', 'CS')
+('nothing', 'PN')
+('goes', 'VBZ')
+('wrong', 'JJ')
+
+Displaying all possible tags for a word in the testing set:
+
+('During', ['IN', 'IN-TL'])
+('a', ['AT', 'AT-HL', 'FW-IN', 'NIL', 'AT-NC', 'NN', 'FW-IN-TL', 'AT-TL'])
+('visit', ['NN', 'VB'])
+('to', ['TO', 'IN', 'IN-HL', 'TO-HL', 'IN-TL', 'NPS', 'NIL', 'QL', 'TO-NC', 'IN-NC'])
+('the', ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL'])
+('Cleveland', ['NP-HL', 'NP'])
+('Indians', ['NPS', 'NPS-HL', 'NPS-TL'])
+('Beane', 'NULL')
+('meets', ['VBZ-HL', 'VBZ', 'NNS'])
+('Peter', ['NP', 'NP-TL'])
+('Brand', ['NN', 'QL'])
+('a', ['AT', 'AT-HL', 'FW-IN', 'NIL', 'AT-NC', 'NN', 'FW-IN-TL', 'AT-TL'])
+('young', ['JJ', 'NN', 'JJ-NC'])
+('Yale', ['NP-TL', 'NP'])
+('economics', ['NN'])
+('graduate', ['NN', 'VB', 'JJ'])
+('with', ['IN', 'IN-HL', 'RB', 'IN-NC'])
+('radical', ['JJ', 'NN'])
+('ideas', ['NNS'])
+('about', ['IN', 'RB', 'RP', 'IN-HL', 'NIL'])
+('how', ['QL', 'WRB', 'WQL', 'WRB-HL', 'WRB-NC'])
+('to', ['TO', 'IN', 'IN-HL', 'TO-HL', 'IN-TL', 'NPS', 'NIL', 'QL', 'TO-NC', 'IN-NC'])
+('assess', ['VB'])
+('player', ['NN'])
+('value', ['NN', 'NN-HL', 'VB'])
+
+('Beane', 'NULL')
+('tests', ['NNS', 'NNS-HL', 'VBZ'])
+("Brand's", 'NULL')
+('theory', ['NN', 'NN-HL'])
+('by', ['IN', 'IN-HL', 'IN-TL', 'RB', 'NIL', 'IN-NC'])
+('asking', ['VBG'])
+('whether', ['CS'])
+('he', ['PPS', 'PPS-NC', 'NIL'])
+('would', ['MD', 'MD-HL'])
+('have', ['HV', 'HV-HL', 'HV-NC'])
+('drafted', ['VBD', 'VBN'])
+('Beane', 'NULL')
+('out', ['RP', 'IN', 'PP$', 'RP-HL', 'IN-HL', 'RB-NC', 'RP-NC'])
+('of', ['IN', 'IN-TL', 'IN-HL', 'IN-NC', 'IN-TL-HL', 'NIL'])
+('high', ['JJ', 'NN', 'JJ-HL', 'RB'])
+('school', ['NN', 'NN-HL', 'VB', 'NN-TL'])
+
+('Though', ['CS'])
+('scouts', ['NNS'])
+('considered', ['VBD', 'VBN'])
+('Beane', 'NULL')
+('hugely', 'NULL')
+('promising', ['JJ', 'VBG'])
+('his', ['PP$', 'PP$$', 'NIL', 'PP$-NC', 'PP$-TL'])
+('career', ['NN'])
+('in', ['IN', 'RP', 'IN-HL', 'IN-TL', 'IN-NC', 'RP-HL', 'NN', 'NIL', 'RP-NC', 'FW-IN'])
+('the', ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL'])
+('Major', ['NN-TL', 'NP', 'JJ', 'JJ-TL'])
+('Leagues', ['NNS'])
+('was', ['BEDZ', 'BEDZ-HL', 'BEDZ-NC'])
+('disappointing', ['JJ'])
+
+('Brand', ['NN', 'QL'])
+('admits', ['VBZ'])
+('that', ['CS', 'WPS', 'DT', 'QL', 'WPO', 'CS-HL', 'DT-NC', 'NIL', 'WPS-NC', 'WPO-NC', 'CS-NC', 'WPS-HL'])
+('based', ['VBN', 'VBD'])
+('on', ['IN', 'IN-TL', 'RP', 'IN-HL', 'NIL', 'IN-NC'])
+('his', ['PP$', 'PP$$', 'NIL', 'PP$-NC', 'PP$-TL'])
+('method', ['NN', 'NN-HL'])
+('of', ['IN', 'IN-TL', 'IN-HL', 'IN-NC', 'IN-TL-HL', 'NIL'])
+('assessing', ['VBG'])
+('player', ['NN'])
+('value', ['NN', 'NN-HL', 'VB'])
+('he', ['PPS', 'PPS-NC', 'NIL'])
+('would', ['MD', 'MD-HL'])
+('not', ['*', '*-HL', '*-NC'])
+('have', ['HV', 'HV-HL', 'HV-NC'])
+('drafted', ['VBD', 'VBN'])
+('him', ['PPO', 'PPO-NC'])
+('until', ['CS', 'IN'])
+('the', ['AT', 'AT-TL', 'AT-HL', 'AT-NC', 'NIL', 'AT-TL-HL'])
+('ninth', ['OD'])
+('round', ['NN', 'VB', 'JJ', 'RB', 'IN'])
+
+('Impressed', ['VBD', 'VBN'])
+('Beane', 'NULL')
+('hires', ['VBZ'])
+('Brand', ['NN', 'QL'])
+('as', ['CS', 'QL', 'CS-HL', 'IN', 'CS-TL', 'RB', 'NIL'])
+('his', ['PP$', 'PP$$', 'NIL', 'PP$-NC', 'PP$-TL'])
+('assistant', ['NN', 'JJ'])
+('manager', ['NN', 'NN-HL'])
+
+
+Applying same rules to Test Data and printing results:
+
+('During', 'IN')
+('a', 'AT')
+('visit', 'NN')
+('to', 'IN')
+('the', 'AT')
+('Cleveland', 'NP-HL')
+('Indians', 'NPS')
+('Beane', 'NP')
+('meets', 'VBZ-HL')
+('Peter', 'NP')
+('Brand', 'NP')
+('a', 'AT')
+('young', 'JJ')
+('Yale', 'NP-TL')
+('economics', 'NN')
+('graduate', 'NN')
+('with', 'IN')
+('radical', 'JJ')
+('ideas', 'NNS')
+('about', 'IN')
+('how', 'QL')	WRONG!
+('to', 'TO')
+('assess', 'VB')
+('player', 'NN')
+('value', 'NN')
+
+('Beane', 'NP')
+('tests', 'NNS')	WRONG!
+("Brand's", 'NP$')
+('theory', 'NN')
+('by', 'IN')
+('asking', 'VBG')
+('whether', 'CS')
+('he', 'PPS')
+('would', 'MD')
+('have', 'HV')
+('drafted', 'VBD')
+('Beane', 'NP')
+('out', 'RP')
+('of', 'IN')
+('high', 'JJ')
+('school', 'NN')
+
+('Though', 'CS')
+('scouts', 'NNS')
+('considered', 'VBD')
+('Beane', 'NP')
+('hugely', 'NP')	WRONG!
+('promising', 'JJ')
+('his', 'PP$')
+('career', 'NN')
+('in', 'IN')
+('the', 'AT')
+('Major', 'NP-TL')
+('Leagues', 'NPS')
+('was', 'BEDZ')
+('disappointing', 'JJ')
+
+('Brand', 'NN') WRONG!
+('admits', 'VBZ')
+('that', 'CS')
+('based', 'VBD')
+('on', 'IN')
+('his', 'PP$')
+('method', 'NN')
+('of', 'IN')
+('assessing', 'VBG')
+('player', 'NN')
+('value', 'NN')
+('he', 'PPS')
+('would', 'MD')
+('not', '*')
+('have', 'HV')
+('drafted', 'VBN')
+('him', 'PPO')
+('until', 'CS')
+('the', 'AT')
+('ninth', 'OD')
+('round', 'NN')
+
+('Impressed', 'VBD')
+('Beane', 'NP')
+('hires', 'VBZ')
+('Brand', 'NP')
+('as', 'CS')
+('his', 'PP$')
+('assistant', 'NN') WRONG!
+('manager', 'NN')
+
+Issues in Test Data Tagging:
+
+1. 'how to assess player value' : "how" should be WRB and not QL
+
+	Rule 7: if WRB tag is available for a word and the next word is not a JJ or NN, change the tag to WRB
+
+2.'tests theory by asking' : "tests" should be VBZ and not NNS
+
+	Rule 8: if VB* tag is available for a word and the next word is a NN*, change tag to VB*
+
+3. 'assistant manager' : 'assistant' should be JJ and not NN
+
+	Rule 9: Change tag from NN to JJ if JJ is an available tag and the tag of the next word is NN*
+
+4: 'hugely promising' : The problem arised since the Brown Dataset did not have "hugely" as a separate word and hence it got the NULL tag. By default, I assigned NNP tags to NULL values and hence this problem arose.
+
+	Rule 10: For a word with a NULL tag, check if it ends with "ly" and if it is not the first word in the sentence, check if the first letter is lower case. If the above checks hold, Assign to the word the RB tag for adverbs.
+
+- These are the only 4 discrepancies found. And 4 new rules have been assigned to deal with these.
+Note that these scenarios were not encountered in the the testing data and hence could not be taken care of.
+
+Another issue lies in determining whether the first word in a sentence starting with a capitalized letter is an NNP or not.
+Suppose the word also exists as a NN, then we have to look at the discourse level to analyze whether it is an NNP or an NN.
+Note that this is precisely the problem of named entity recognition which is beyond the scope of POS tagging and rule based disambiguation.
+
+The code to generate the above data has been submitted. Note that NO EXTRA MODULES were used. I reverse engineered the file namely, "english_pos_brown.txt" into a python dictionary to find all possible tags for a particular word.
