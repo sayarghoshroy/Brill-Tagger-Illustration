@@ -4,16 +4,16 @@
 
 #### Tasks
 
-1. List all possible POS Tags that could be assigned to each word in the development data by looking up provided 'english_pos_brown.txt'
+1. List all possible tags for each word in the development data by looking up provided 'english_pos_brown.txt'
 
-2. Disambiguate tags for each word manually, depending on context plus lexical properties, and make rules in the process
+2. Disambiguate tags for each word manually, considering context and lexical properties & make rules in the process
 
-3. Tag the ​testing data ​using the formulated disambiguation rules
+3. Tag the testing data using the formulated disambiguation rules
 
-4. Analyze annotation of the ​testing data, reformalize the rule-set
+4. Analyze annotation of the testing data, reformalize the rule-set
 
-<p align='justify>'
-The list of tags for a particular word in the Brown Corpus is maintained in the decreasing order of frequency of that word with that particular tag. At the first stage, we should ideally assign to each word, the tag for that word with the highest frequency of occurence. Since, we do not have frequencies available as part of the task, the tag assigned to the first occurence of a word in the corpus will be the default tag for the word and then we shall then apply methods of disambiguation.
+<p align="justify">
+The list of tags for a particular word in the Brown Corpus is maintained in the decreasing order of frequency of the word with that particular tag. At the first stage, we should ideally assign to each word, the tag for that word with the highest frequency of occurence. Since, we do not have frequencies available as part of the task, the tag assigned to the first occurence of a word in the corpus will be the default tag for the word and then we shall then apply methods of disambiguation.
 </p>
 
 ---
@@ -30,21 +30,19 @@ The list of tags for a particular word in the Brown Corpus is maintained in the 
 
 - Some Proper Nouns listed as NN
 
-
 #### Disambiguation Rules:
 
 1. NN -> VB if DO* before NN
 
-2. VBN -> VBD unless [HV, HVZ, HVD, HVN, HVG] VBN
+2. VBN -> VBD unless \[HV, HVZ, HVD, HVN, HVG\] VBN
 
-3. VBD -> VBN if HV, HVZ, HVD, HVN, HVG] VBD
+3. VBD -> VBN if \[HV, HVZ, HVD, HVN, HVG\] VBD
 
 4. NULL -> NP, if ends with 's or s' : consider NP$
 
-5. TO -> IN unless "[VB(#, D, G, N, P, Z)] to" OR "to [VB(#, D, G, N, P, Z)]"
+5. TO -> IN unless "\[VB(#, D, G, N, P, Z)\] to" OR "to \[VB(#, D, G, N, P, Z)\]"
 
 6. NN with first letter capitalized is NP
-
 
 #### The final tagging results by applying the handcrafted rules to the testing data have been provided.
 
