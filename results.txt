@@ -1,4 +1,4 @@
-Sayar Ghosh Roy - 20171047
+Detailed Results:
 
 All possible tags for a particular word in the training set based on first occurence in corpus:
 
@@ -522,5 +522,3 @@ Note that these scenarios were not encountered in the the testing data and hence
 Another issue lies in determining whether the first word in a sentence starting with a capitalized letter is an NNP or not.
 Suppose the word also exists as a NN, then we have to look at the discourse level to analyze whether it is an NNP or an NN.
 Note that this is precisely the problem of named entity recognition which is beyond the scope of POS tagging and rule based disambiguation.
-
-The code to generate the above data has been submitted. Note that NO EXTRA MODULES were used. I reverse engineered the file namely, "english_pos_brown.txt" into a python dictionary to find all possible tags for a particular word.
