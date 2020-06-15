@@ -62,17 +62,17 @@ The list of tags for a particular word in the Brown Corpus is maintained in the 
 
 	Rule 9: Change tag from NN to JJ if JJ is an available tag and the tag of the next word is NN*
 
-4. 'hugely promising' : The problem arised since the Brown Dataset did not have "hugely" as a separate word and hence it got the NULL tag. By default, I assigned NNP tags to NULL values and hence this problem arose.
+4. <p align="justify">'hugely promising' : The problem arised since the Brown Dataset did not have "hugely" as a separate word and hence it got the NULL tag. By default, I assigned NNP tags to NULL values and hence this problem arose.</p>
 
-	Rule 10: For a word with a NULL tag, check if it ends with "ly" and if it is not the first word in the sentence, check if the first letter is lower case. If the above checks hold, Assign to the word the RB tag for adverbs.
+	<p align="justify">Rule 10: For a word with a NULL tag, check if it ends with "ly" and if it is not the first word in the sentence, check if the first letter is lower case. If the above checks hold, Assign to the word the RB tag for adverbs.</p>
 
 - These are the only 4 discrepancies found. And 4 new rules have been assigned to deal with these.
 
 - Note that these scenarios were not encountered in the the training data and hence could not be taken care of.
 
-- Another issue lies in determining whether the first word in a sentence starting with a capitalized letter is an NNP or not.
+- <p align="justify">Another issue lies in determining whether the first word in a sentence starting with a capitalized letter is an NNP or not.</p>
 
-- Suppose the word also exists as a NN, then we have to look at the discourse level to analyze whether it is an NNP or an NN. This is precisely the problem of Named Entity Recognition which is beyond the scope of our simple rule based disambiguation scheme.
+- <p align="justify">Suppose the word also exists as a NN, then we have to look at the discourse level to analyze whether it is an NNP or an NN. This is precisely the problem of Named Entity Recognition which is beyond the scope of our simple rule based disambiguation scheme.</p>
 
 ---
 
