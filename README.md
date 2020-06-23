@@ -32,15 +32,15 @@ The list of tags for a particular word in the Brown Corpus is maintained in the 
 
 #### Disambiguation Rules:
 
-1. NN -> VB if DO* before NN
+1. NN → VB if DO* before NN
 
-2. VBN -> VBD unless \[HV, HVZ, HVD, HVN, HVG\] VBN
+2. VBN → VBD unless \[HV, HVZ, HVD, HVN, HVG\] VBN
 
-3. VBD -> VBN if \[HV, HVZ, HVD, HVN, HVG\] VBD
+3. VBD → VBN if \[HV, HVZ, HVD, HVN, HVG\] VBD
 
-4. NULL -> NP, if ends with 's or s' : consider NP$
+4. NULL → NP, if ends with 's or s' : consider NP$
 
-5. TO -> IN unless "\[VB(#, D, G, N, P, Z)\] to" OR "to \[VB(#, D, G, N, P, Z)\]"
+5. TO → IN unless "\[VB(#, D, G, N, P, Z)\] to" OR "to \[VB(#, D, G, N, P, Z)\]"
 
 6. NN with first letter capitalized is NP
 
